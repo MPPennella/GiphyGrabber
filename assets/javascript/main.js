@@ -27,19 +27,22 @@ function makeButton(topic) {
 // Calls Giphy API and retrieves set of images for clicked topic
 function displayGifsForClicked() {
 
+    // Get array of 10 gifs of topic from Giphy API
     var topic = $(this).attr("data-topic");
-    // TODO: Set up Giphy API call URL
-    // Placeholder
-    var queryURL = "http://"+topic;
+
+    // Giphy API Key: YKwD0wmIyRtqV6qgSW9bSPbVADvZzzoF
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q="+topic+"&limit=10&api_key=YKwD0wmIyRtqV6qgSW9bSPbVADvZzzoF";
 
     // Creates AJAX call for the specific button being clicked
     $.ajax({
     url: queryURL,
     method: "GET"
     }).then(function(response) {
-    console.log(response);
+        let gifs = response.data;
+        console.log(gifs);
+
+        // TODO: Remove current gifs displayed and display new gifs from query response
     
-    // TODO: Remove current gifs displayed and display new gifs from query response
 
     });
 
