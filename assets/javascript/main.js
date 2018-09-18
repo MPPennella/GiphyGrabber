@@ -71,12 +71,27 @@ function makeGifCard( giphyData ) {
     // Add gif rating display
     let gifRating = $("<div>").text(giphyData.rating);
 
-    // TODO: Make gifs toggle animation when clicked    
-
     card.append(gif);
     card.append(gifRating);
 
     return card;
+}
+
+// Toggle animation of a clicked gif
+function toggleAnimation() {
+    let gif = $(this)
+    let state = gif.attr("data-state");
+    if (state=="still") {
+        gif.attr({
+            "data-state": "animate",
+            "src": gif.attr("data-url-anim")
+        });
+    } else if (state=="animate") {
+        gif.attr({
+            "data-state": "still",
+            "src": gif.attr("data-url-still")
+        });
+    }
 }
 
 // This function handles events where the #add-topic button is clicked
@@ -97,5 +112,7 @@ $("#add-topic").on("click", function(event) {
 // Dynamically adds click event listeners to all .topicBtn elements
 $(document).on("click", ".topicBtn", displayGifsForClicked);
 
+// Dynamically adds click event listeners to all .gif elements
+$(document).on("click", ".gif", toggleAnimation)
 
 $(document).ready( initializeButtons );
