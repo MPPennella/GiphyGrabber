@@ -41,11 +41,32 @@ function displayGifsForClicked() {
         let gifs = response.data;
         console.log(gifs);
 
-        // TODO: Remove current gifs displayed and display new gifs from query response
-    
+        // Remove current gifs displayed
+        $("#gifArea").empty();
+
+        for (let i=0; i<gifs.length; i++) {
+            $("#gifArea").append( makeGifCard(gifs[i]) );
+        }
 
     });
 
+}
+
+// Constructs a display card for a gif using Giphy API object
+// Returns JQuery object of card
+function makeGifCard( giphyData ) {
+    let card = $("<div>");
+    let gif = $("<img>").attr("src", giphyData.images.fixed_height.url);
+    let gifRating = $("<div>").text(giphyData.rating);
+
+    // TODO: Make gifs start in paused state
+
+    // TODO: Make gifs toggle animation when clicked    
+
+    card.append(gif);
+    card.append(gifRating);
+
+    return card;
 }
 
 // This function handles events where the #add-topic button is clicked
