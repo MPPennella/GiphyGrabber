@@ -56,10 +56,20 @@ function displayGifsForClicked() {
 // Returns JQuery object of card
 function makeGifCard( giphyData ) {
     let card = $("<div>");
-    let gif = $("<img>").attr("src", giphyData.images.fixed_height.url);
-    let gifRating = $("<div>").text(giphyData.rating);
 
-    // TODO: Make gifs start in paused state
+    // Setup gif with .gif class, state tracker, and data for still and animated state sources, default to still source
+    let gif = $("<img>").addClass("gif");
+    let urlAnim = giphyData.images.fixed_width.url;
+    let urlStill = giphyData.images.fixed_width_still.url;
+    gif.attr({
+        src: urlStill,
+        "data-state": "still",
+        "data-url-anim": urlAnim,
+        "data-url-still": urlStill
+    });
+    
+    // Add gif rating display
+    let gifRating = $("<div>").text(giphyData.rating);
 
     // TODO: Make gifs toggle animation when clicked    
 
