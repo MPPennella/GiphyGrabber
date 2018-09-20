@@ -1,5 +1,5 @@
 // Initial array of topics
-var topics = ["Cats","Owls","Doge"];
+var topics = ["Doge","Cat","Owl","Dinosaur","Monkey","Baby Hedgehog"];
 
 // Holds desired offset for Giphy API calls
 var offset = 0;
