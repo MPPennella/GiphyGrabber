@@ -13,7 +13,7 @@ function initializeButtons() {
 // Creates a button with text and data of the passed topic
 function makeButton(topic) {
     // Use class of topicBtn so listeners can be attached
-    var btn = $("<button>").addClass("topicBtn");
+    var btn = $("<button>").addClass("topicBtn col-1");
 
     // Set data-topic attribute and text to the topic passed
     btn.attr("data-topic", topic);
@@ -55,7 +55,7 @@ function displayGifsForClicked() {
 // Constructs a display card for a gif using Giphy API object
 // Returns JQuery object of card
 function makeGifCard( giphyData ) {
-    let card = $("<div>");
+    let card = $("<div>").addClass("col-3");
 
     // Setup gif with .gif class, state tracker, and data for still and animated state sources, default to still source
     let gif = $("<img>").addClass("gif");
