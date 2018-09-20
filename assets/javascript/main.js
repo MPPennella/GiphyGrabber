@@ -66,9 +66,9 @@ function displayGifsForTopic(topic) {
 // Constructs a display card for a gif using Giphy API object
 // Returns JQuery object of card
 function makeGifCard( giphyData ) {
-    let card = $("<div>").addClass("card");
+    let card = $("<div>").addClass("card text-center");
 
-    let header = $("<div>").addClass("card-header");
+    let header = $("<h5>").addClass("card-header");
     header.text(giphyData.title);
     card.append(header);
     console.log(giphyData.title)
@@ -76,7 +76,7 @@ function makeGifCard( giphyData ) {
     let cardBody = $("<div>").addClass("card-body");
     card.append(cardBody);
     // Setup gif with .gif class, state tracker, and data for still and animated state sources, default to still source
-    let gif = $("<img>").addClass("gif card-img-bottom");
+    let gif = $("<img>").addClass("gif card-img-bottom mb-1");
     let urlAnim = giphyData.images.fixed_width.url;
     let urlStill = giphyData.images.fixed_width_still.url;
     gif.attr({
