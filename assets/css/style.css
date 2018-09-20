@@ -1,3 +1,14 @@
+body {
+    background: #cccccc;
+}
+
+header {
+    padding: 5px;
+    background: #444444;
+    color: #cccccc;
+    font-size: 20px;
+    font-weight: bold;
+}
 form {
     margin: 10px 0;
 }
