@@ -13,7 +13,7 @@ function initializeButtons() {
 // Creates a button with text and data of the passed topic
 function makeButton(topic) {
     // Use class of topicBtn so listeners can be attached
-    var btn = $("<button>").addClass("topicBtn col-6 col-sm-3 col-md-2 col-lg-1");
+    var btn = $("<button>").addClass("topicBtn col-6 col-sm-3 col-md-2");
 
     // Set data-topic attribute and text to the topic passed
     btn.attr("data-topic", topic);
