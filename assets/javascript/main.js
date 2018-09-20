@@ -127,6 +127,9 @@ $("#add-topic").on("click", function(event) {
       makeButton(newTopic);
     }
 
+    // Clear value of #input
+    $("#input").val("");
+
 });
 
 // Dynamically adds click event listeners to all .topicBtn elements
