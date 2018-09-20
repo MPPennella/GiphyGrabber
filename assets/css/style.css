@@ -16,3 +16,9 @@ form {
 input {
     margin-left: 5px;
 }
+
+.moreBtn {
+    display: block;
+    margin: 0 auto;
+    padding: 5px 10px;
+}

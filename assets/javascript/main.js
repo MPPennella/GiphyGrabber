@@ -52,7 +52,7 @@ function displayGifsForTopic(topic) {
         // Increase offset by 10 for next set called
         offset +=10;
 
-        let moreBtn = $("<button>").text("Show More");
+        let moreBtn = $("<button>").addClass("moreBtn").text("Show More");
         $("#gifArea").append(moreBtn)
         moreBtn.on("click", function() {
             $(this).remove();
