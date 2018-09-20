@@ -13,7 +13,7 @@ function initializeButtons() {
 // Creates a button with text and data of the passed topic
 function makeButton(topic) {
     // Use class of topicBtn so listeners can be attached
-    var btn = $("<button>").addClass("topicBtn col-1");
+    var btn = $("<button>").addClass("topicBtn col-6 col-sm-3 col-md-2 col-lg-1");
 
     // Set data-topic attribute and text to the topic passed
     btn.attr("data-topic", topic);
@@ -55,10 +55,17 @@ function displayGifsForClicked() {
 // Constructs a display card for a gif using Giphy API object
 // Returns JQuery object of card
 function makeGifCard( giphyData ) {
-    let card = $("<div>").addClass("col-3");
+    let card = $("<div>").addClass("card");
 
+    let header = $("<div>").addClass("card-header");
+    header.text(giphyData.title);
+    card.append(header);
+    console.log(giphyData.title)
+
+    let cardBody = $("<div>").addClass("card-body");
+    card.append(cardBody);
     // Setup gif with .gif class, state tracker, and data for still and animated state sources, default to still source
-    let gif = $("<img>").addClass("gif");
+    let gif = $("<img>").addClass("gif card-img-bottom");
     let urlAnim = giphyData.images.fixed_width.url;
     let urlStill = giphyData.images.fixed_width_still.url;
     gif.attr({
@@ -69,10 +76,12 @@ function makeGifCard( giphyData ) {
     });
     
     // Add gif rating display
-    let gifRating = $("<div>").text(giphyData.rating);
+    let rating = giphyData.rating.toUpperCase()
+    let gifRating = $("<div>").addClass("card-text")
+    gifRating.text(`Rating: ${rating}`);
 
-    card.append(gif);
-    card.append(gifRating);
+    cardBody.append(gif);
+    cardBody.append(gifRating);
 
     return card;
 }

@@ -10,18 +10,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
   </head>
   <body>
+    <div class="container">
+      <div id="buttonArea" class="row"></div>
 
-    <div id="buttonArea" class="row"></div>
+      <form>
+          <label for="input">Add a category:</label>
+          <input type="text" id="input"><br>
 
-    <form>
-        <label for="input">Add a category:</label>
-        <input type="text" id="input"><br>
+          <input id="add-topic" type="submit" value="Create">
+      </form>
 
-        <input id="add-topic" type="submit" value="Create">
-    </form>
-
-    <div id="gifArea" class="row"></div>
-   
+      <div id="gifArea" class="card-columns"></div>
+    </div>
 
       
     <!-- Load Javascript for JQuery and Bootstrap -->
