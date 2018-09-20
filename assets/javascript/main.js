@@ -31,7 +31,7 @@ function makeButton(topic) {
 }
 
 // Calls Giphy API and retrieves set of images for clicked topic
-function displayGifsForClicked(topic) {
+function displayGifsForTopic(topic) {
 
     // Get array of 10 gifs of topic from Giphy API
     // Giphy API Key: YKwD0wmIyRtqV6qgSW9bSPbVADvZzzoF
@@ -56,7 +56,7 @@ function displayGifsForClicked(topic) {
         $("#gifArea").append(moreBtn)
         moreBtn.on("click", function() {
             $(this).remove();
-            displayGifsForClicked(currentTopic);
+            displayGifsForTopic(currentTopic);
         })
 
     });
@@ -134,7 +134,7 @@ $(document).on("click", ".topicBtn", function() {
     offset = 0;
     currentTopic = $(this).attr("data-topic");
     $("#gifArea").empty();
-    displayGifsForClicked( currentTopic );
+    displayGifsForTopic( currentTopic );
 });
 
 // Dynamically adds click event listeners to all .gif elements
