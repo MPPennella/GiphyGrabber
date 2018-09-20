@@ -1,6 +1,12 @@
 // Initial array of topics
 var topics = ["Cats","Owls","Doge"];
 
+// Holds desired offset for Giphy API calls
+var offset = 0;
+
+// Holds value of current topic
+var currentTopic;
+
 
 // Creates initial buttons from array of topics
 function initializeButtons() {
@@ -25,13 +31,11 @@ function makeButton(topic) {
 }
 
 // Calls Giphy API and retrieves set of images for clicked topic
-function displayGifsForClicked() {
+function displayGifsForClicked(topic) {
 
     // Get array of 10 gifs of topic from Giphy API
-    var topic = $(this).attr("data-topic");
-
     // Giphy API Key: YKwD0wmIyRtqV6qgSW9bSPbVADvZzzoF
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q="+topic+"&limit=10&api_key=YKwD0wmIyRtqV6qgSW9bSPbVADvZzzoF";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q="+topic+"&offset="+offset+"&limit=10&api_key=YKwD0wmIyRtqV6qgSW9bSPbVADvZzzoF";
 
     // Creates AJAX call for the specific button being clicked
     $.ajax({
@@ -41,12 +45,19 @@ function displayGifsForClicked() {
         let gifs = response.data;
         console.log(gifs);
 
-        // Remove current gifs displayed
-        $("#gifArea").empty();
-
         for (let i=0; i<gifs.length; i++) {
             $("#gifArea").append( makeGifCard(gifs[i]) );
         }
+
+        // Increase offset by 10 for next set called
+        offset +=10;
+
+        let moreBtn = $("<button>").text("Show More");
+        $("#gifArea").append(moreBtn)
+        moreBtn.on("click", function() {
+            $(this).remove();
+            displayGifsForClicked(currentTopic);
+        })
 
     });
 
@@ -119,7 +130,12 @@ $("#add-topic").on("click", function(event) {
 });
 
 // Dynamically adds click event listeners to all .topicBtn elements
-$(document).on("click", ".topicBtn", displayGifsForClicked);
+$(document).on("click", ".topicBtn", function() {
+    offset = 0;
+    currentTopic = $(this).attr("data-topic");
+    $("#gifArea").empty();
+    displayGifsForClicked( currentTopic );
+});
 
 // Dynamically adds click event listeners to all .gif elements
 $(document).on("click", ".gif", toggleAnimation)
