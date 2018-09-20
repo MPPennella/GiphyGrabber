@@ -120,8 +120,8 @@ $("#add-topic").on("click", function(event) {
     // This line of code will grab the input from the textbox
     var newTopic = $("#input").val().trim();
 
-    // Check if topic already exists
-    if (!topics.includes(newTopic)){
+    // Check if topic was empty or already exists
+    if (newTopic!="" && !topics.includes(newTopic)){
       // If not, add topic to end of array and make a new button for it
       topics.push(newTopic);
       makeButton(newTopic);
