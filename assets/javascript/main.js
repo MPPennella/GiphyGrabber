@@ -43,7 +43,6 @@ function displayGifsForTopic(topic) {
     method: "GET"
     }).then(function(response) {
         let gifs = response.data;
-        console.log(gifs);
 
         for (let i=0; i<gifs.length; i++) {
             $("#gifArea").append( makeGifCard(gifs[i]) );
@@ -71,7 +70,6 @@ function makeGifCard( giphyData ) {
     let header = $("<h5>").addClass("card-header");
     header.text(giphyData.title);
     card.append(header);
-    console.log(giphyData.title)
 
     let cardBody = $("<div>").addClass("card-body");
     card.append(cardBody);
@@ -85,15 +83,15 @@ function makeGifCard( giphyData ) {
         "data-url-anim": urlAnim,
         "data-url-still": urlStill
     });
+    cardBody.append(gif);
     
     // Add gif rating display
     let rating = giphyData.rating.toUpperCase()
     let gifRating = $("<div>").addClass("card-text")
     gifRating.text(`Rating: ${rating}`);
-
-    cardBody.append(gif);
     cardBody.append(gifRating);
 
+    // Return completed card
     return card;
 }
 
@@ -143,4 +141,5 @@ $(document).on("click", ".topicBtn", function() {
 // Dynamically adds click event listeners to all .gif elements
 $(document).on("click", ".gif", toggleAnimation)
 
+// Create initial button setup on document load
 $(document).ready( initializeButtons );
